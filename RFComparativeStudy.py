@@ -15,7 +15,7 @@ Rotation forest:
 Reference - http://ieeexplore.ieee.org/ielx5/34/35279/01677518.pdf
 
 n denotes the ID of the *.data file
-Eg: "python RFComparativeStudy.py 5" takes input from 5.data file in uci-datasets
+Eg: "python3 RFComparativeStudy.py 5" takes input from 5.data file in uci-datasets
 """
 
 n = sys.argv[1]
@@ -107,10 +107,9 @@ Bagging algorithm:
 
 Reference - http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html#sklearn.ensemble.BaggingClassifier
 """
-# print(X_train.shape,Y_train)
-# bag = BaggingClassifier(base_estimator=DecisionTreeClassifier(), n_estimators=35, max_samples=len(X)/35, max_features=1.0, bootstrap=True, bootstrap_features=False, oob_score=False, warm_start=False, n_jobs=1, random_state=None, verbose=0)
-# bag.fit(X_train, Y_train)
-# print ("Accuracy (Bagging Algorithm): " + str(100*accuracy_score(Y_test, bag.predict(X_test))) + " %")
+bag = BaggingClassifier(base_estimator=DecisionTreeClassifier(), n_estimators=35, max_samples=1.0, max_features=1.0, bootstrap=True, bootstrap_features=False, oob_score=False, warm_start=False, n_jobs=1, random_state=None, verbose=0)
+bag.fit(X_train, Y_train)
+print ("Accuracy (Bagging Algorithm): " + str(100*accuracy_score(Y_test, bag.predict(X_test))) + " %")
 
 """
 Random Forest
