@@ -1,0 +1,16 @@
+Outputs:
+	python3 RFComparativeStudy.py 1
+		Accuracy (Rotation Forest): 83.2 %
+		Accuracy (Boosting Algorithm): 79.2 %
+		Accuracy (Bagging Algorithm): 84.8 %
+		Accuracy (Random Forest): 84.0 %
+	python3 RFComparativeStudy.py 2
+		Accuracy (Rotation Forest): 71.42857142857143 %
+		Accuracy (Boosting Algorithm): 77.92207792207793 %
+		Accuracy (Bagging Algorithm): 80.51948051948052 %
+		Accuracy (Random Forest): 79.22077922077922 %
+	python3 RFComparativeStudy.py 3
+		Accuracy (Rotation Forest): 72.05882352941177 %
+		Accuracy (Boosting Algorithm): 83.82352941176471 %
+		Accuracy (Bagging Algorithm): 83.82352941176471 %
+		Accuracy (Random Forest): 86.76470588235294 %
