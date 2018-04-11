@@ -15,7 +15,7 @@ Rotation forest:
 Reference - http://ieeexplore.ieee.org/ielx5/34/35279/01677518.pdf
 
 n denotes the ID of the *.data file
-Eg: "python3 RFComparativeStudy.py 5" takes input from 5.data file in uci-datasets
+Eg: "python3/python RFComparativeStudy.py 5" takes input from 5.data file in uci-datasets
 """
 
 n = sys.argv[1]
