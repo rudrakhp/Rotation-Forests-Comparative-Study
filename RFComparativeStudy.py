@@ -36,7 +36,7 @@ def takeInput(n):
 X, Y = takeInput(n)
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=0)
 n_samps, n_features = X.shape
-n_classes = len(np.unique(X[0]))
+n_classes = len(np.unique(Y))
 
 def train(X,Y):
         n_samps, n_features = X.shape
