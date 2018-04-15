@@ -130,9 +130,5 @@ Reference - http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.Ra
 """
 rf = RandomForestClassifier(n_estimators=35, criterion='gini', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features='auto', max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, bootstrap=True, oob_score=False, n_jobs=1, random_state=None, verbose=0, warm_start=False, class_weight=None)
 rf.fit(X_train, Y_train)
-<<<<<<< HEAD
 # print ("Accuracy (Random Forest): " + str(100*accuracy_score(Y_test, rf.predict(X_test))) + " %")
 outFile.write(str(100*accuracy_score(Y_test, rf.predict(X_test)))+"\n")
-=======
-print ("Accuracy (Random Forest): " + str(100*accuracy_score(Y_test, rf.predict(X_test))) + " %")
->>>>>>> 6b006e7fe300de6d5c59fe50cad88399f130db5a
