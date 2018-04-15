@@ -16,14 +16,15 @@ n denotes the ID of the *.data file
 Eg: "python3/python RFComparativeStudy.py 5" takes input from 5.data file in uci-datasets
 """
 
-n = sys.argv[1]
-n_classifiers = 35
+n = int(sys.argv[1])
+n_classifiers = int(sys.argv[2])
 classifiers = []
 rotmat = []
 std = []
 med = []
 noise = []
 selected_subsets = []
+outFile = open("compare.txt", "awr+")
 
 def takeInput(n):
     path = './uci-datasets/' + str(n) + '.data'
@@ -102,7 +103,8 @@ pred = test(X_test)
 pred = pred.flatten()
 pred = pred.astype(int)
 Y_test = Y_test.astype(int)
-print ("Accuracy (Rotation Forest): " + str(100*accuracy_score(Y_test, pred)) + " %")
+# print ("Accuracy (Rotation Forest): " + str(100*accuracy_score(Y_test, pred)) + " %")
+outFile.write(str(100*accuracy_score(Y_test, pred))+" ")
 
 """
 Boosting algorithm:
@@ -110,7 +112,8 @@ Reference - http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.Ad
 """
 boost = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(), n_estimators=35, learning_rate=0.1, algorithm='SAMME.R', random_state=None)
 boost.fit(X_train, Y_train)
-print ("Accuracy (Boosting Algorithm): " + str(100*accuracy_score(Y_test, boost.predict(X_test))) + " %")
+#print ("Accuracy (Boosting Algorithm): " + str(100*accuracy_score(Y_test, boost.predict(X_test))) + " %")
+outFile.write(str(100*accuracy_score(Y_test, boost.predict(X_test)))+" ")
 
 """
 Bagging algorithm:
@@ -118,7 +121,8 @@ Reference - http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.Ba
 """
 bag = BaggingClassifier(base_estimator=DecisionTreeClassifier(), n_estimators=35, max_samples=1.0, max_features=1.0, bootstrap=True, bootstrap_features=False, oob_score=False, warm_start=False, n_jobs=1, random_state=None, verbose=0)
 bag.fit(X_train, Y_train)
-print ("Accuracy (Bagging Algorithm): " + str(100*accuracy_score(Y_test, bag.predict(X_test))) + " %")
+# print ("Accuracy (Bagging Algorithm): " + str(100*accuracy_score(Y_test, bag.predict(X_test))) + " %")
+outFile.write(str(100*accuracy_score(Y_test, bag.predict(X_test)))+" ")
 
 """
 Random Forest
@@ -126,4 +130,9 @@ Reference - http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.Ra
 """
 rf = RandomForestClassifier(n_estimators=35, criterion='gini', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features='auto', max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, bootstrap=True, oob_score=False, n_jobs=1, random_state=None, verbose=0, warm_start=False, class_weight=None)
 rf.fit(X_train, Y_train)
+<<<<<<< HEAD
+# print ("Accuracy (Random Forest): " + str(100*accuracy_score(Y_test, rf.predict(X_test))) + " %")
+outFile.write(str(100*accuracy_score(Y_test, rf.predict(X_test)))+"\n")
+=======
 print ("Accuracy (Random Forest): " + str(100*accuracy_score(Y_test, rf.predict(X_test))) + " %")
+>>>>>>> 6b006e7fe300de6d5c59fe50cad88399f130db5a
