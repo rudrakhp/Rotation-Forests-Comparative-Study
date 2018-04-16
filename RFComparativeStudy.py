@@ -110,7 +110,7 @@ outFile.write(str(100*accuracy_score(Y_test, pred))+" ")
 Boosting algorithm:
 Reference - http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.AdaBoostClassifier.html#sklearn.ensemble.AdaBoostClassifier
 """
-boost = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(), n_estimators=35, learning_rate=0.1, algorithm='SAMME.R', random_state=None)
+boost = AdaBoostClassifier(base_estimator=DecisionTreeClassifier(), n_estimators=n_classifiers, learning_rate=0.1, algorithm='SAMME.R', random_state=None)
 boost.fit(X_train, Y_train)
 #print ("Accuracy (Boosting Algorithm): " + str(100*accuracy_score(Y_test, boost.predict(X_test))) + " %")
 outFile.write(str(100*accuracy_score(Y_test, boost.predict(X_test)))+" ")
@@ -119,7 +119,7 @@ outFile.write(str(100*accuracy_score(Y_test, boost.predict(X_test)))+" ")
 Bagging algorithm:
 Reference - http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.BaggingClassifier.html#sklearn.ensemble.BaggingClassifier
 """
-bag = BaggingClassifier(base_estimator=DecisionTreeClassifier(), n_estimators=35, max_samples=1.0, max_features=1.0, bootstrap=True, bootstrap_features=False, oob_score=False, warm_start=False, n_jobs=1, random_state=None, verbose=0)
+bag = BaggingClassifier(base_estimator=DecisionTreeClassifier(), n_estimators=n_classifiers, max_samples=1.0, max_features=1.0, bootstrap=True, bootstrap_features=False, oob_score=False, warm_start=False, n_jobs=1, random_state=None, verbose=0)
 bag.fit(X_train, Y_train)
 # print ("Accuracy (Bagging Algorithm): " + str(100*accuracy_score(Y_test, bag.predict(X_test))) + " %")
 outFile.write(str(100*accuracy_score(Y_test, bag.predict(X_test)))+" ")
@@ -128,7 +128,7 @@ outFile.write(str(100*accuracy_score(Y_test, bag.predict(X_test)))+" ")
 Random Forest
 Reference - http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html
 """
-rf = RandomForestClassifier(n_estimators=35, criterion='gini', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features='auto', max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, bootstrap=True, oob_score=False, n_jobs=1, random_state=None, verbose=0, warm_start=False, class_weight=None)
+rf = RandomForestClassifier(n_estimators=n_classifiers, criterion='gini', max_depth=None, min_samples_split=2, min_samples_leaf=1, min_weight_fraction_leaf=0.0, max_features='auto', max_leaf_nodes=None, min_impurity_decrease=0.0, min_impurity_split=None, bootstrap=True, oob_score=False, n_jobs=1, random_state=None, verbose=0, warm_start=False, class_weight=None)
 rf.fit(X_train, Y_train)
 # print ("Accuracy (Random Forest): " + str(100*accuracy_score(Y_test, rf.predict(X_test))) + " %")
 outFile.write(str(100*accuracy_score(Y_test, rf.predict(X_test)))+"\n")
